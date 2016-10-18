@@ -164,15 +164,36 @@ namespace DietEasy.Database
 
         public static decimal GetDayMealCarbsPercentage(DateTime date)
         {
-            return (int)Math.Round((double)Decimal.Divide((100 * GetDayMealCarbsCalories(date)), GetDayMealTotalCalories(date)));
+            if (GetDayMealTotalCalories(date) > 0)
+            {
+                return (int)Math.Round((double)Decimal.Divide((100 * GetDayMealCarbsCalories(date)), GetDayMealTotalCalories(date)));
+            }
+            else
+            {
+                return 0;
+            }
         }
         public static decimal GetDayMealFatsPercentage(DateTime date)
         {
-            return (int)Math.Round((double)Decimal.Divide((100 * GetDayMealFatsCalories(date)), GetDayMealTotalCalories(date)));
+            if (GetDayMealTotalCalories(date) > 0)
+            {
+                return (int)Math.Round((double)Decimal.Divide((100 * GetDayMealFatsCalories(date)), GetDayMealTotalCalories(date)));
+            }
+            else
+            {
+                return 0;
+            }
         }
         public static decimal GetDayMealProteinsPercentage(DateTime date)
         {
-            return (int)Math.Round((double)Decimal.Divide((100 * GetDayMealProteinsCalories(date)), GetDayMealTotalCalories(date)));
+            if (GetDayMealTotalCalories(date) > 0)
+            {
+                return (int)Math.Round((double)Decimal.Divide((100 * GetDayMealProteinsCalories(date)), GetDayMealTotalCalories(date)));
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public static decimal GetDayMealTotalCarbs(DateTime date)
