@@ -130,5 +130,27 @@ namespace DietEasy.Database
             }
         }
 
+        public static void InsertFood(Food food)
+        {
+            try
+            {
+                db.Insert(food);
+            }
+            catch(Exception exception)
+            {
+            }
+        }
+
+        public static void DeleteFood(Food food)
+        {
+            try
+            {
+                db.Delete(food);
+            }
+            catch (Exception exception)
+            {
+            }
+        }
+
     }
 }

@@ -11,7 +11,6 @@ C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\bin\Debug\System.Data
 C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\bin\Debug\EntityFramework.xml
 C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\bin\Debug\EntityFramework.SqlServer.xml
 C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\bin\Debug\System.Data.SQLite.xml
-C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\obj\Debug\DietEasy.csprojResolveAssemblyReference.cache
 C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\obj\Debug\View\MainWindow.g.cs
 C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\obj\Debug\App.g.cs
 C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\obj\Debug\DietEasy_Content.g.cs
@@ -23,3 +22,4 @@ C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\obj\Debug\DietEasy.Pr
 C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\obj\Debug\DietEasy.csproj.GenerateResource.Cache
 C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\obj\Debug\DietEasy.exe
 C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\obj\Debug\DietEasy.pdb
+C:\SOFTWARE\Diet Easy (WPF)\DietEasy_WPF\DietEasy\DietEasy\obj\Debug\DietEasy.csprojResolveAssemblyReference.cache

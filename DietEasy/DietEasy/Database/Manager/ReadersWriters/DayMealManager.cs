@@ -35,6 +35,17 @@ namespace DietEasy.Database
             return GetFoodList();
         }
 
+        public static void DeleteDailyFood(DayMeal dayMeal)
+        {
+            try
+            {
+                db.Delete(dayMeal);
+            }
+            catch (Exception exception)
+            {
+            }
+        }
+
         public static List<DayMeal> GetDayMealsList()
         {
             List<DayMeal> list = (from x in db.Table<DayMeal>()
@@ -73,12 +84,31 @@ namespace DietEasy.Database
             return list;
         }
 
-        public static void AddDayMeal(int foodId, int quantity)
+        public static int GetLastDayMealId()
+        {
+            try
+            {
+                return db.Table<DayMeal>().OrderByDescending(x => x.Id).FirstOrDefault().Id;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public static void AddDayMeal(Food food, decimal servingSize)
         {
             DayMeal dayMeal = new DayMeal();
+            dayMeal.Id = DatabaseManager.GetLastDayMealId() + 1;
             dayMeal.Day = DateTime.Now.ToLocalTime();
-            dayMeal.FoodId = foodId;
-            dayMeal.FoodQuantity = quantity;
+            dayMeal.FoodId = food.Id;
+            dayMeal.FoodName = food.Name;
+            dayMeal.Grams = servingSize * food.ServingSizeGrams;
+            dayMeal.Calories = food.CaloriesInServingSize(servingSize);
+            dayMeal.Carbs = food.CarbsInServingSize(servingSize);
+            dayMeal.Sugar = food.SugarsInServingSize(servingSize);
+            dayMeal.Proteins = food.ProteinsInServingSize(servingSize);
+            dayMeal.Fats = food.FatsInServingSize(servingSize);
             db.Insert(dayMeal);
         }
 
@@ -113,10 +143,36 @@ namespace DietEasy.Database
             foreach(DayMeal dayMeal in GetDayMealsList(date))
             {
                 Food food = GetFood(dayMeal.FoodId);
-                total = total + food.CaloriesInGrams(dayMeal.FoodQuantity);                
+                total = total + food.CaloriesInGrams(dayMeal.Grams);                
             }
 
             return total;
+        }
+
+        public static decimal GetDayMealCarbsCalories(DateTime date)
+        {
+            return GetDayMealTotalCarbs(date) * 4;
+        }
+        public static decimal GetDayMealFatsCalories(DateTime date)
+        {
+            return GetDayMealTotalFats(date) * 9;
+        }
+        public static decimal GetDayMealProteinsCalories(DateTime date)
+        {
+            return GetDayMealTotalProteins(date) * 4;
+        }
+
+        public static decimal GetDayMealCarbsPercentage(DateTime date)
+        {
+            return (int)Math.Round((double)Decimal.Divide((100 * GetDayMealCarbsCalories(date)), GetDayMealTotalCalories(date)));
+        }
+        public static decimal GetDayMealFatsPercentage(DateTime date)
+        {
+            return (int)Math.Round((double)Decimal.Divide((100 * GetDayMealFatsCalories(date)), GetDayMealTotalCalories(date)));
+        }
+        public static decimal GetDayMealProteinsPercentage(DateTime date)
+        {
+            return (int)Math.Round((double)Decimal.Divide((100 * GetDayMealProteinsCalories(date)), GetDayMealTotalCalories(date)));
         }
 
         public static decimal GetDayMealTotalCarbs(DateTime date)
@@ -126,7 +182,20 @@ namespace DietEasy.Database
             foreach (DayMeal dayMeal in GetDayMealsList(date))
             {
                 Food food = GetFood(dayMeal.FoodId);
-                total = total + food.CarbsInGrams(dayMeal.FoodQuantity);
+                total = total + food.CarbsInGrams(dayMeal.Grams);
+            }
+
+            return total;
+        }
+
+        public static decimal GetDayMealTotalSugar(DateTime date)
+        {
+            decimal total = 0;
+
+            foreach (DayMeal dayMeal in GetDayMealsList(date))
+            {
+                Food food = GetFood(dayMeal.FoodId);
+                total = total + food.SugarsInGrams(dayMeal.Grams);
             }
 
             return total;
@@ -139,7 +208,7 @@ namespace DietEasy.Database
             foreach (DayMeal dayMeal in GetDayMealsList(date))
             {
                 Food food = GetFood(dayMeal.FoodId);
-                total = total + food.FatsInGrams(dayMeal.FoodQuantity);
+                total = total + food.FatsInGrams(dayMeal.Grams);
             }
 
             return total;
@@ -152,7 +221,7 @@ namespace DietEasy.Database
             foreach (DayMeal dayMeal in GetDayMealsList(date))
             {
                 Food food = GetFood(dayMeal.FoodId);
-                total = total + food.ProteinsInGrams(dayMeal.FoodQuantity);
+                total = total + food.ProteinsInGrams(dayMeal.Grams);
             }
 
             return total;

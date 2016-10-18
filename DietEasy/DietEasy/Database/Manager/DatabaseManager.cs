@@ -16,7 +16,6 @@ namespace DietEasy.Database
         public static string dbPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
         public static string dbFullPath = Path.Combine(dbPath, dbName);
         public static SQLiteConnection db = new SQLiteConnection(dbFullPath);
-        public static Food selectedFood = null;
 
         public static void CreateAndPopulateFixedData()
         {
