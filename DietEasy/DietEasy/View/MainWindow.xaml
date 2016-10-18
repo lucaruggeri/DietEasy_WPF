@@ -1,0 +1,47 @@
+﻿<Window x:Class="DietEasy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DietEasy"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="855.389" Width="1227.261" Loaded="Window_Loaded">
+    <Grid>
+        <TabControl x:Name="tabMain" HorizontalAlignment="Left" Height="800" Margin="10,10,0,0" VerticalAlignment="Top" Width="1194">
+            <TabItem x:Name="tabDailyFoodTitle" Header="Daily food">
+                <Grid x:Name="tabDailyFood" Background="#FFE5E5E5">
+                    <Label x:Name="lblToday" Content="Today's meals" HorizontalAlignment="Left" Margin="21,26,0,0" VerticalAlignment="Top"/>
+                    <DataGrid x:Name="grdTodaysMeals" HorizontalAlignment="Left" Margin="21,57,0,0" VerticalAlignment="Top" Height="599" Width="664"/>
+                    <Button x:Name="btnAddFood" Content="Add food" HorizontalAlignment="Left" Margin="811,533,0,0" VerticalAlignment="Top" Width="186" Height="161"/>
+                    <TextBox x:Name="txtFoodName" HorizontalAlignment="Left" Height="23" Margin="859,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="295"/>
+                    <Label x:Name="lblFoodName" Content="Name" HorizontalAlignment="Left" Margin="800,135,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtCalories" HorizontalAlignment="Left" Height="23" Margin="859,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104"/>
+                    <Label x:Name="lblCalories" Content="Calories" HorizontalAlignment="Left" Margin="797,163,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblCarbs" Content="Carbs" HorizontalAlignment="Left" Margin="797,189,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblSugar" Content="Sugar" HorizontalAlignment="Left" Margin="797,215,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblProteins" Content="Proteins" HorizontalAlignment="Left" Margin="796,273,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblFats" Content="Fats" HorizontalAlignment="Left" Margin="797,246,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtCarbs" HorizontalAlignment="Left" Height="23" Margin="859,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104"/>
+                    <TextBox x:Name="txtSugar" HorizontalAlignment="Left" Height="23" Margin="859,218,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104"/>
+                    <TextBox x:Name="txtFats" HorizontalAlignment="Left" Height="23" Margin="859,246,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104"/>
+                    <TextBox x:Name="txtProteins" HorizontalAlignment="Left" Height="23" Margin="859,276,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104"/>
+                    <Label x:Name="lblGrams" Content="Grams" HorizontalAlignment="Left" Margin="796,304,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtGrams" HorizontalAlignment="Left" Height="23" Margin="859,304,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104"/>
+                    <Label x:Name="lblSearch" Content="Search food" HorizontalAlignment="Left" Margin="715,31,0,0" VerticalAlignment="Top" Width="153"/>
+                    <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="715,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="439" TextChanged="txtSearch_TextChanged"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabDatabaseTitle" Header="Food database">
+                <Grid x:Name="tabDatabase" Background="#FFE5E5E5">
+                    <DataGrid x:Name="grdFoodDatabase" HorizontalAlignment="Left" Margin="22,87,0,0" VerticalAlignment="Top" Height="518" Width="1145"/>
+                    <Label x:Name="lblSearchDatabase" Content="Search food" HorizontalAlignment="Left" Margin="22,22,0,0" VerticalAlignment="Top" Width="153"/>
+                    <TextBox x:Name="txtSearchDatabase" HorizontalAlignment="Left" Height="23" Margin="22,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="439" TextChanged="txtSearchDatabase_TextChanged"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabGoalsTitle" Header="Your goals" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="117" Margin="-2,-2,-61,0">
+                <Grid x:Name="tabGoals" Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
