@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DietEasy"
+        xmlns:ViewModel="clr-namespace:DietEasy.ViewModel" 
         mc:Ignorable="d"
         Title="MainWindow" Height="855.389" Width="1773.556" Loaded="Window_Loaded">
     <Grid>
@@ -16,24 +17,31 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="357*"/>
                     </Grid.ColumnDefinitions>
+
+                    <!--<Grid.DataContext>
+                    <ViewModel:DietEasyViewModel/>
+                    </Grid.DataContext>-->
+
                     <Label x:Name="lblToday" Content="Today's meals" HorizontalAlignment="Left" Margin="21,26,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
                     <DataGrid x:Name="grdTodaysMeals" HorizontalAlignment="Left" Margin="21,57,0,0" VerticalAlignment="Top" Height="310" Width="760" Grid.ColumnSpan="4" SelectionChanged="grdTodaysMeals_SelectionChanged"/>
                     <Label x:Name="lblSearch" Content="Search food" HorizontalAlignment="Left" Margin="627,5,0,0" VerticalAlignment="Top" Width="153" Grid.Column="3"/>
                     <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="627,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="439" TextChanged="txtSearch_TextChanged" Grid.Column="3"/>
-                    <DataGrid x:Name="grdFoodDatabaseReference" HorizontalAlignment="Left" Margin="627,59,0,0" VerticalAlignment="Top" Height="557" Width="761" SelectionChanged="grdFoodDatabaseReference_SelectionChanged" Grid.Column="3"/>
-                    <TextBox x:Name="txtServingSizeToAdd" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="704,618,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" Text="1" TextChanged="txtServingSizeToAdd_TextChanged"/>
+
+                    <DataGrid SelectedItem="{Binding selectedFood, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="grdFoodDatabaseReference" HorizontalAlignment="Left" Margin="627,59,0,0" VerticalAlignment="Top" Height="557" Width="761" SelectionChanged="grdFoodDatabaseReference_SelectionChanged" Grid.Column="3"/>
+
+                    <TextBox x:Name="txtServingSizeToAdd" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="704,618,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" Text="{Binding selectedServingSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="txtServingSizeToAdd_TextChanged"/>
                     <Label x:Name="lblDailyServingSize" Content="Serving size" Grid.Column="3" HorizontalAlignment="Left" Margin="627,615,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnEat" Content="Eat the food!" Grid.Column="3" HorizontalAlignment="Left" Margin="779,618,0,0" VerticalAlignment="Top" Width="609" Click="btnEat_Click"/>
-                    <TextBox x:Name="txtCaloriesToAdd" HorizontalAlignment="Left" Height="23" Margin="736.003,668,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
+                    <Button x:Name="btnEat" Content="Eat the food!" Grid.Column="3" HorizontalAlignment="Left" Margin="979,618,0,0" VerticalAlignment="Top" Width="409" Click="btnEat_Click"/>
+                    <TextBox x:Name="txtCaloriesToAdd" HorizontalAlignment="Left" Height="23" Margin="736.003,668,0,0" TextWrapping="Wrap" Text="{Binding mealCalories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
                     <Label x:Name="lblCalories_Copy" Content="Calories" HorizontalAlignment="Left" Margin="679.003,665,0,0" VerticalAlignment="Top" Grid.Column="3"/>
                     <Label x:Name="lblCarbs_Copy" Content="Carbs" HorizontalAlignment="Left" Margin="681.003,693,0,0" VerticalAlignment="Top" Grid.Column="3"/>
                     <Label x:Name="lblSugar_Copy" Content="Of wich sugar" HorizontalAlignment="Left" Margin="858.003,691,0,0" VerticalAlignment="Top" Grid.Column="3"/>
                     <Label x:Name="lblProteins_Copy" Content="Proteins" HorizontalAlignment="Left" Margin="858.003,721,0,0" VerticalAlignment="Top" Grid.Column="3"/>
                     <Label x:Name="lblFats_Copy" Content="Fats" HorizontalAlignment="Left" Margin="681.003,721,0,0" VerticalAlignment="Top" Grid.Column="3"/>
-                    <TextBox x:Name="txtCarbsToAdd" HorizontalAlignment="Left" Height="23" Margin="736.003,696,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
-                    <TextBox x:Name="txtSugarToAdd" HorizontalAlignment="Left" Height="23" Margin="946.003,691,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
-                    <TextBox x:Name="txtFatsToAdd" HorizontalAlignment="Left" Height="23" Margin="736.003,724,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
-                    <TextBox x:Name="txtProteinsToAdd" HorizontalAlignment="Left" Height="23" Margin="946.003,719,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
+                    <TextBox x:Name="txtCarbsToAdd" HorizontalAlignment="Left" Height="23" Margin="736.003,696,0,0" TextWrapping="Wrap" Text="{Binding mealCarbs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
+                    <TextBox x:Name="txtSugarToAdd" HorizontalAlignment="Left" Height="23" Margin="946.003,691,0,0" TextWrapping="Wrap" Text="{Binding mealSugar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
+                    <TextBox x:Name="txtFatsToAdd" HorizontalAlignment="Left" Height="23" Margin="736.003,724,0,0" TextWrapping="Wrap" Text="{Binding mealFats, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
+                    <TextBox x:Name="txtProteinsToAdd" HorizontalAlignment="Left" Height="23" Margin="946.003,719,0,0" TextWrapping="Wrap" Text="{Binding mealProteins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
                     <TextBox x:Name="txtCaloriesTotal" HorizontalAlignment="Left" Height="23" Margin="2,551,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Grid.ColumnSpan="3" Grid.Column="1"/>
                     <Label x:Name="lblCalories_Copy1" Content="Calories" Margin="59,548,3,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblCarbs_Copy1" Content="Carbs grams" HorizontalAlignment="Left" Margin="26,462,0,0" VerticalAlignment="Top"/>
@@ -57,6 +65,7 @@
                     <TextBox x:Name="txtCarbsPercentage" HorizontalAlignment="Left" Height="23" Margin="0,668,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Grid.ColumnSpan="3" Grid.Column="1"/>
                     <TextBox x:Name="txtFatsPercentage" HorizontalAlignment="Left" Height="23" Margin="0,696,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Grid.ColumnSpan="3" Grid.Column="1"/>
                     <TextBox x:Name="txtProteinsPercentage" HorizontalAlignment="Left" Height="23" Margin="0,724,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="104" Grid.Column="1" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="textBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="768,618,0,0" TextWrapping="Wrap" Text="{Binding mealGrams, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabDatabaseTitle" Header="Food database">

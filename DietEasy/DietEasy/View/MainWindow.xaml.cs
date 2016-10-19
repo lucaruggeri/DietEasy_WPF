@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using DietEasy.Model;
 using DietEasy.Database;
+using DietEasy.ViewModel;
 
 namespace DietEasy
 {
@@ -23,14 +24,16 @@ namespace DietEasy
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Food SelectedFood { get; set; }
-        public Decimal SelectedServingSize { get; set; }
+        //DataContext declaration
+        DietEasyViewModel viewModel { get; set; }
 
         public MainWindow()
         {
+            //DataContext initialization
+            viewModel = new DietEasyViewModel();
+            this.DataContext = viewModel;
+
             InitializeComponent();
-            SelectedFood = new Food();
-            SelectedServingSize = 1;
         }
 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -171,24 +174,6 @@ namespace DietEasy
             }
         }
 
-        private void LoadFoodItemToAdd(Food item)
-        {
-            if (item != null)
-            {
-                txtCaloriesToAdd.Text = item.Calories.ToString();
-                txtCarbsToAdd.Text = item.Carbs.ToString();
-                txtFatsToAdd.Text = item.Fats.ToString();
-                txtProteinsToAdd.Text = item.Proteins.ToString();
-                txtSugarToAdd.Text = item.Sugar.ToString();
-                btnEat.IsEnabled = true;
-            }
-            else
-            {
-                ClearFoodFieldsToAdd();
-                btnEat.IsEnabled = false;
-            }
-        }
-
         private Food GetUserFoodItem()
         {
             Food food = new Food();
@@ -259,58 +244,21 @@ namespace DietEasy
 
         private void grdFoodDatabaseReference_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (grdFoodDatabaseReference.SelectedItem != null)
-            {
-                if (grdFoodDatabaseReference.SelectedItem.GetType() == typeof(Food))
-                {
-                    LoadFoodItemToAdd((Food)grdFoodDatabaseReference.SelectedItem);
-                    CalculateServingsNutritionalValue();
-                }
-                else
-                {
-                    ClearFoodFieldsToAdd();
-                }
-            }
-            else
-            {
-                ClearFoodFieldsToAdd();
-            }
         }
 
         private void txtServingSizeToAdd_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CalculateServingsNutritionalValue();
-        }
-
-        private void CalculateServingsNutritionalValue()
-        {
-            if (txtServingSizeToAdd.Text != null)
-            {
-                if (txtServingSizeToAdd.Text != string.Empty)
-                {
-                    SelectedServingSize = Decimal.Parse(txtServingSizeToAdd.Text.Replace(',', '.'));
-                    SelectedFood = (Food)grdFoodDatabaseReference.SelectedItem;
-
-                    if (SelectedFood != null)
-                    {
-                        this.txtCaloriesToAdd.Text = SelectedFood.CaloriesInServingSize(SelectedServingSize).ToString();
-                        this.txtCarbsToAdd.Text = SelectedFood.CarbsInServingSize(SelectedServingSize).ToString();
-                        this.txtFatsToAdd.Text = SelectedFood.FatsInServingSize(SelectedServingSize).ToString();
-                        this.txtSugarToAdd.Text = SelectedFood.SugarsInServingSize(SelectedServingSize).ToString();
-                        this.txtProteinsToAdd.Text = SelectedFood.ProteinsInServingSize(SelectedServingSize).ToString();
-                    }
-                }
-            }
         }
 
         private void btnEat_Click(object sender, RoutedEventArgs e)
         {
-            if (SelectedFood != null)
-            {
-                DatabaseManager.AddDayMeal(SelectedFood, SelectedServingSize);
-                grdTodaysMeals.ItemsSource = DatabaseManager.GetDayMealsList();
-                UpdateTotals();
-            }
+            //TODO 
+            //if (SelectedFood != null)
+            //{
+            //    DatabaseManager.AddDayMeal(SelectedFood, SelectedServingSize);
+            //    grdTodaysMeals.ItemsSource = DatabaseManager.GetDayMealsList(DateTime.Today);
+            //    UpdateTotals();
+            //}
         }
 
         private void UpdateTotals()

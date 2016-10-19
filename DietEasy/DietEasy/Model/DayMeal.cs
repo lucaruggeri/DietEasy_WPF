@@ -15,7 +15,7 @@ namespace DietEasy.Model
         public int FoodId { get; set; }
         public string FoodName { get; set; }
         public decimal Grams { get; set; }
-        public int ServingSizes { get; set; }
+        public decimal ServingSizes { get; set; }
         public decimal Calories { get; set; }
         public decimal Carbs { get; set; }
         public decimal Sugar { get; set; }

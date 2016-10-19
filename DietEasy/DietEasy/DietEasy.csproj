@@ -96,6 +96,7 @@
     <Compile Include="Model\PersonalInfo.cs" />
     <Compile Include="Database\SQLite\SQLite.cs" />
     <Compile Include="Database\SQLite\SQLiteAsync.cs" />
+    <Compile Include="ViewModel\DietEasyViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -129,9 +130,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
