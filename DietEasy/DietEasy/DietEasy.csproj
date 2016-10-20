@@ -92,6 +92,7 @@
     <Compile Include="Database\Manager\ReadersWriters\PersonalInfoManager.cs" />
     <Compile Include="DietEasyBusinessLogic\DietEasyBusinessLogic.cs" />
     <Compile Include="Model\DayMeal.cs" />
+    <Compile Include="Model\DailyMealsTotals.cs" />
     <Compile Include="Model\Food.cs" />
     <Compile Include="Model\PersonalInfo.cs" />
     <Compile Include="Database\SQLite\SQLite.cs" />

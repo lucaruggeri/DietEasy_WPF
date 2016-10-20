@@ -236,10 +236,9 @@ namespace DietEasy
             grdFoodDatabase.ItemsSource = DatabaseManager.GetFoodList();
         }
 
-        private void btnDeleteFood_Click(object sender, RoutedEventArgs e)
+        private void btnDeleteDatabaseFood_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseManager.DeleteFood((Food)grdFoodDatabase.SelectedItem);
-            grdFoodDatabase.ItemsSource = DatabaseManager.GetFoodList();
+            viewModel.RemoveDatabaseFood();
         }
 
         private void grdFoodDatabaseReference_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -252,30 +251,11 @@ namespace DietEasy
 
         private void btnEat_Click(object sender, RoutedEventArgs e)
         {
-            //TODO 
-            //if (SelectedFood != null)
-            //{
-            //    DatabaseManager.AddDayMeal(SelectedFood, SelectedServingSize);
-            //    grdTodaysMeals.ItemsSource = DatabaseManager.GetDayMealsList(DateTime.Today);
-            //    UpdateTotals();
-            //}
+            viewModel.EatTheFood();
         }
 
         private void UpdateTotals()
         {
-            txtCaloriesTotal.Text = DatabaseManager.GetDayMealTotalCalories(DateTime.Today).ToString();
-            txtCarbsTotal.Text = DatabaseManager.GetDayMealTotalCarbs(DateTime.Today).ToString();
-            txtSugarTotal.Text = DatabaseManager.GetDayMealTotalSugar(DateTime.Today).ToString();
-            txtFatsTotal.Text = DatabaseManager.GetDayMealTotalFats(DateTime.Today).ToString();
-            txtProteinsTotal.Text = DatabaseManager.GetDayMealTotalProteins(DateTime.Today).ToString();
-
-            txtCarbsCalories.Text = DatabaseManager.GetDayMealCarbsCalories(DateTime.Today).ToString();
-            txtFatsCalories.Text = DatabaseManager.GetDayMealFatsCalories(DateTime.Today).ToString();
-            txtProteinsCalories.Text = DatabaseManager.GetDayMealProteinsCalories(DateTime.Today).ToString();
-
-            txtCarbsPercentage.Text = DatabaseManager.GetDayMealCarbsPercentage(DateTime.Today).ToString();
-            txtFatsPercentage.Text = DatabaseManager.GetDayMealFatsPercentage(DateTime.Today).ToString();
-            txtProteinsPercentage.Text = DatabaseManager.GetDayMealProteinsPercentage(DateTime.Today).ToString();
         }
 
         private void grdTodaysMeals_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -285,9 +265,7 @@ namespace DietEasy
 
         private void btnDeleteDailyFood_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseManager.DeleteDailyFood((DayMeal)grdTodaysMeals.SelectedItem);
-            grdTodaysMeals.ItemsSource = DatabaseManager.GetDayMealsList();
-            UpdateTotals();
+            viewModel.RemoveDailyMeal();
         }
     }
 }
