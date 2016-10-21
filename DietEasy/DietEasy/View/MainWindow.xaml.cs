@@ -223,17 +223,17 @@ namespace DietEasy
 
         private void btnUpdateFood_Click(object sender, RoutedEventArgs e)
         {
+            viewModel.UpdateDatabaseFood();
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            ClearFoodFields();
+            viewModel.ClearSelectedDatabaseFood();
         }
 
         private void btnAddFood_Click(object sender, RoutedEventArgs e)
         {
-            DatabaseManager.InsertFood(GetUserFoodItem());
-            grdFoodDatabase.ItemsSource = DatabaseManager.GetFoodList();
+            viewModel.AddDatabaseFood();
         }
 
         private void btnDeleteDatabaseFood_Click(object sender, RoutedEventArgs e)

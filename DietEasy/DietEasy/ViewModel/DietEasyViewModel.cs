@@ -70,6 +70,21 @@ namespace DietEasy.ViewModel
             }
         }
 
+        private Food _selectedDatabaseFood;
+        public Food selectedDatabaseFood
+        {
+            get
+            {
+                return _selectedDatabaseFood;
+            }
+            set
+            {
+                _selectedDatabaseFood = value;
+                LoadSelectedDatabaseFoodInfo();
+                NotifyPropertyChanged();
+            }
+        }
+
         private DayMeal _selectedDailyMeal;
         public DayMeal selectedDailyMeal
         {
@@ -80,6 +95,20 @@ namespace DietEasy.ViewModel
             set
             {
                 _selectedDailyMeal = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public List<Food> _foodDatabase;
+        public List<Food> foodDatabase
+        {
+            get
+            {
+                return _foodDatabase;
+            }
+            set
+            {
+                _foodDatabase = value;
                 NotifyPropertyChanged();
             }
         }
@@ -148,7 +177,24 @@ namespace DietEasy.ViewModel
         public string FatsPercentage { get { return _FatsPercentage; } set { _FatsPercentage = value; NotifyPropertyChanged(); } }
         private string _ProteinsPercentage;
         public string ProteinsPercentage { get { return _ProteinsPercentage; } set { _ProteinsPercentage = value; NotifyPropertyChanged(); } }
-            
+
+        private string _databaseFoodName;
+        public string databaseFoodName { get { return _databaseFoodName; } set { _databaseFoodName = value; NotifyPropertyChanged(); } }
+        private string _databaseFoodCalories;
+        public string databaseFoodCalories { get { return _databaseFoodCalories; } set { _databaseFoodCalories = value; NotifyPropertyChanged(); } }
+        private string _databaseFoodCarbs;
+        public string databaseFoodCarbs { get { return _databaseFoodCarbs; } set { _databaseFoodCarbs = value; NotifyPropertyChanged(); } }
+        private string _databaseFoodSugars;
+        public string databaseFoodSugar { get { return _databaseFoodSugars; } set { _databaseFoodSugars = value; NotifyPropertyChanged(); } }
+        private string _databaseFoodFats;
+        public string databaseFoodFats { get { return _databaseFoodFats; } set { _databaseFoodFats = value; NotifyPropertyChanged(); } }
+        private string _databaseFoodProteins;
+        public string databaseFoodProteins { get { return _databaseFoodProteins; } set { _databaseFoodProteins = value; NotifyPropertyChanged(); } }
+        private string _databaseFoodServingSizeGrams;
+        public string databaseFoodServingSizeGrams { get { return _databaseFoodServingSizeGrams; } set { _databaseFoodServingSizeGrams = value; NotifyPropertyChanged(); } }
+        private string _databaseFoodServingSizeDescription;
+        public string databaseFoodServingSizeDescription { get { return _databaseFoodServingSizeDescription; } set { _databaseFoodServingSizeDescription = value; NotifyPropertyChanged(); } }
+
         private Decimal _selectedServingSize;
         public Decimal selectedServingSize
         {
@@ -163,8 +209,6 @@ namespace DietEasy.ViewModel
                 NotifyPropertyChanged();
             }
         }
-
-        public List<Food> foodDatabase { get; set; }
         #endregion
 
         public DietEasyViewModel()
@@ -196,8 +240,46 @@ namespace DietEasy.ViewModel
 
         public void RemoveDatabaseFood()
         {
-            DatabaseManager.DeleteFood(selectedFood);
+            DatabaseManager.DeleteFood(selectedDatabaseFood);
             this.foodDatabase = DatabaseManager.GetFoodList();
+        }
+
+        public void AddDatabaseFood()
+        {
+            Food newFood = new Food();
+            newFood.Id = DatabaseManager.GetLastFoodId() + 1;
+            newFood.Name = databaseFoodName;
+            newFood.Calories = Decimal.Parse(databaseFoodCalories.Replace(',', '.'));
+            newFood.Carbs = Decimal.Parse(databaseFoodCarbs.Replace(',', '.'));
+            newFood.Sugar = Decimal.Parse(databaseFoodSugar.Replace(',', '.'));
+            newFood.Fats = Decimal.Parse(databaseFoodFats.Replace(',', '.'));
+            newFood.Proteins = Decimal.Parse(databaseFoodProteins.Replace(',', '.'));
+            newFood.ServingSizeGrams = Decimal.Parse(databaseFoodServingSizeGrams.Replace(',', '.'));
+            newFood.ServingSizeDescription = databaseFoodServingSizeDescription;
+
+            DatabaseManager.InsertFood(newFood);
+            this.foodDatabase = DatabaseManager.GetFoodList();
+        }
+
+        public void UpdateDatabaseFood()
+        {
+            selectedDatabaseFood.Name = databaseFoodName;
+            selectedDatabaseFood.Calories = Decimal.Parse(databaseFoodCalories.Replace(',', '.'));
+            selectedDatabaseFood.Carbs = Decimal.Parse(databaseFoodCarbs.Replace(',', '.'));
+            selectedDatabaseFood.Sugar = Decimal.Parse(databaseFoodSugar.Replace(',', '.'));
+            selectedDatabaseFood.Fats = Decimal.Parse(databaseFoodFats.Replace(',', '.'));
+            selectedDatabaseFood.Proteins = Decimal.Parse(databaseFoodProteins.Replace(',', '.'));
+            selectedDatabaseFood.ServingSizeGrams = Decimal.Parse(databaseFoodServingSizeGrams.Replace(',', '.'));
+            selectedDatabaseFood.ServingSizeDescription = databaseFoodServingSizeDescription;
+
+            DatabaseManager.UpdateFood(selectedDatabaseFood);
+
+            this.foodDatabase = DatabaseManager.GetFoodList();
+        }
+
+        public void ClearSelectedDatabaseFood()
+        {
+            this.selectedDatabaseFood = new Food();
         }
 
         private void UpdateTotals()
@@ -257,6 +339,30 @@ namespace DietEasy.ViewModel
                     mealGrams = "(" + meal.Grams.ToString() + " grams)";
                 }
             }
+        }
+
+        private void LoadSelectedDatabaseFoodInfo()
+        {
+            if (selectedDatabaseFood != null)
+            {
+                if (selectedDatabaseFood.Name != null)
+                    databaseFoodName = selectedDatabaseFood.Name;
+                else
+                    databaseFoodName = string.Empty;
+
+                databaseFoodCalories = selectedDatabaseFood.Calories.ToString();
+                databaseFoodCarbs = selectedDatabaseFood.Carbs.ToString();
+                databaseFoodSugar = selectedDatabaseFood.Sugar.ToString();
+                databaseFoodFats = selectedDatabaseFood.Fats.ToString();
+                databaseFoodProteins = selectedDatabaseFood.Proteins.ToString();
+                databaseFoodServingSizeGrams = selectedDatabaseFood.ServingSizeGrams.ToString();
+
+                if (selectedDatabaseFood.ServingSizeDescription != null)
+                    databaseFoodServingSizeDescription = selectedDatabaseFood.ServingSizeDescription;
+                else
+                    databaseFoodServingSizeDescription = string.Empty;
+            }
+        }
 
             //LoadFoodItemToAdd((Food)grdFoodDatabaseReference.SelectedItem);
 
@@ -291,7 +397,6 @@ namespace DietEasy.ViewModel
             //{
             //    ClearFoodFieldsToAdd();
             //}
-        }
 
     }
 }
