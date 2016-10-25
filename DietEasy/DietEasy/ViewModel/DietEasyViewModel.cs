@@ -142,6 +142,22 @@ namespace DietEasy.ViewModel
             }
         }
 
+        private DateTime mealSelectedDay;
+        public DateTime MealSelectedDay
+        {
+            get
+            {
+                return mealSelectedDay;
+            }
+            set
+            {
+                mealSelectedDay = value;
+                NotifyPropertyChanged();
+                LoadDailyMealsByDate(mealSelectedDay);
+                UpdateTotals();
+            }
+        }
+        
         private decimal mealCalories;
         public decimal MealCalories { get { return mealCalories; } set { mealCalories = value; NotifyPropertyChanged(); } }
         private decimal mealCarbs;
@@ -219,7 +235,8 @@ namespace DietEasy.ViewModel
             totals = new DailyMealsTotals();
             meal = new DayMeal();
             selectedServingSize = 1;
-            todayMeals = DatabaseManager.GetDayMealsList(DateTime.Today);
+            MealSelectedDay = DateTime.Today;
+            todayMeals = DatabaseManager.GetDayMealsList(MealSelectedDay);
             foodDatabase = DatabaseManager.GetFoodList();
         }
 
@@ -228,14 +245,14 @@ namespace DietEasy.ViewModel
             if (SelectedFood != null)
             {
                 DatabaseManager.AddDayMeal(SelectedFood, selectedServingSize);
-                this.todayMeals = DatabaseManager.GetDayMealsList(DateTime.Today);
+                this.todayMeals = DatabaseManager.GetDayMealsList(MealSelectedDay);
             }
         }
 
         public void RemoveDailyMeal()
         {
             DatabaseManager.DeleteDailyFood(selectedDailyMeal);
-            this.todayMeals = DatabaseManager.GetDayMealsList(DateTime.Today);
+            this.todayMeals = DatabaseManager.GetDayMealsList(MealSelectedDay);
         }
 
         public void RemoveDatabaseFood()
@@ -285,17 +302,17 @@ namespace DietEasy.ViewModel
         private void UpdateTotals()
         {
             //update TOTALS            
-            totals.CaloriesTotal = DatabaseManager.GetDayMealTotalCalories(DateTime.Today);
-            totals.CarbsTotal = DatabaseManager.GetDayMealTotalCarbs(DateTime.Today);
-            totals.SugarTotal = DatabaseManager.GetDayMealTotalSugar(DateTime.Today);
-            totals.FatsTotal = DatabaseManager.GetDayMealTotalFats(DateTime.Today);
-            totals.ProteinsTotal = DatabaseManager.GetDayMealTotalProteins(DateTime.Today);
-            totals.CarbsCaloriesTotal = DatabaseManager.GetDayMealCarbsCalories(DateTime.Today);
-            totals.FatsCaloriesTotal = DatabaseManager.GetDayMealFatsCalories(DateTime.Today);
-            totals.ProteinsCaloriesTotal = DatabaseManager.GetDayMealProteinsCalories(DateTime.Today);
-            totals.CarbsPercentage = DatabaseManager.GetDayMealCarbsPercentage(DateTime.Today);
-            totals.FatsPercentage = DatabaseManager.GetDayMealFatsPercentage(DateTime.Today);
-            totals.ProteinsPercentage = DatabaseManager.GetDayMealProteinsPercentage(DateTime.Today);
+            totals.CaloriesTotal = DatabaseManager.GetDayMealTotalCalories(MealSelectedDay);
+            totals.CarbsTotal = DatabaseManager.GetDayMealTotalCarbs(MealSelectedDay);
+            totals.SugarTotal = DatabaseManager.GetDayMealTotalSugar(MealSelectedDay);
+            totals.FatsTotal = DatabaseManager.GetDayMealTotalFats(MealSelectedDay);
+            totals.ProteinsTotal = DatabaseManager.GetDayMealTotalProteins(MealSelectedDay);
+            totals.CarbsCaloriesTotal = DatabaseManager.GetDayMealCarbsCalories(MealSelectedDay);
+            totals.FatsCaloriesTotal = DatabaseManager.GetDayMealFatsCalories(MealSelectedDay);
+            totals.ProteinsCaloriesTotal = DatabaseManager.GetDayMealProteinsCalories(MealSelectedDay);
+            totals.CarbsPercentage = DatabaseManager.GetDayMealCarbsPercentage(MealSelectedDay);
+            totals.FatsPercentage = DatabaseManager.GetDayMealFatsPercentage(MealSelectedDay);
+            totals.ProteinsPercentage = DatabaseManager.GetDayMealProteinsPercentage(MealSelectedDay);
 
             //updates VIEW fields
             CaloriesTotal = totals.CaloriesTotal.ToString();
@@ -367,39 +384,45 @@ namespace DietEasy.ViewModel
             }
         }
 
-            //LoadFoodItemToAdd((Food)grdFoodDatabaseReference.SelectedItem);
+        private void LoadDailyMealsByDate(DateTime mealSelectedDay)
+        {
+            todayMeals = DatabaseManager.GetDayMealsList(mealSelectedDay);
+        }
 
-            //if (item != null)
-            //{
-            //    txtCaloriesToAdd.Text = item.Calories.ToString();
-            //    txtCarbsToAdd.Text = item.Carbs.ToString();
-            //    txtFatsToAdd.Text = item.Fats.ToString();
-            //    txtProteinsToAdd.Text = item.Proteins.ToString();
-            //    txtSugarToAdd.Text = item.Sugar.ToString();
-            //    btnEat.IsEnabled = true;
-            //}
-            //else
-            //{
-            //    ClearFoodFieldsToAdd();
-            //    btnEat.IsEnabled = false;
-            //}
 
-            //if (grdFoodDatabaseReference.SelectedItem != null)
-            //{
-            //    if (grdFoodDatabaseReference.SelectedItem.GetType() == typeof(Food))
-            //    {
-            //        LoadFoodItemToAdd((Food)grdFoodDatabaseReference.SelectedItem);
-            //        //TODO UpdateServingsNutritionalValue();
-            //    }
-            //    else
-            //    {
-            //        ClearFoodFieldsToAdd();
-            //    }
-            //}
-            //else
-            //{
-            //    ClearFoodFieldsToAdd();
-            //}
+        //LoadFoodItemToAdd((Food)grdFoodDatabaseReference.SelectedItem);
+
+        //if (item != null)
+        //{
+        //    txtCaloriesToAdd.Text = item.Calories.ToString();
+        //    txtCarbsToAdd.Text = item.Carbs.ToString();
+        //    txtFatsToAdd.Text = item.Fats.ToString();
+        //    txtProteinsToAdd.Text = item.Proteins.ToString();
+        //    txtSugarToAdd.Text = item.Sugar.ToString();
+        //    btnEat.IsEnabled = true;
+        //}
+        //else
+        //{
+        //    ClearFoodFieldsToAdd();
+        //    btnEat.IsEnabled = false;
+        //}
+
+        //if (grdFoodDatabaseReference.SelectedItem != null)
+        //{
+        //    if (grdFoodDatabaseReference.SelectedItem.GetType() == typeof(Food))
+        //    {
+        //        LoadFoodItemToAdd((Food)grdFoodDatabaseReference.SelectedItem);
+        //        //TODO UpdateServingsNutritionalValue();
+        //    }
+        //    else
+        //    {
+        //        ClearFoodFieldsToAdd();
+        //    }
+        //}
+        //else
+        //{
+        //    ClearFoodFieldsToAdd();
+        //}
 
     }
 }

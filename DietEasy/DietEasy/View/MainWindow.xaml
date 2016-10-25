@@ -29,16 +29,15 @@
                     </Grid.DataContext>-->
 
                     <!--test-->
-                    <Label x:Name="lblToday" Content="Today's meals" HorizontalAlignment="Left" Margin="21,26,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="grdTodaysMeals" SelectedItem="{Binding selectedDailyMeal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding todayMeals, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="21,57,0,0" VerticalAlignment="Top" Height="310" Width="760" Grid.ColumnSpan="5" SelectionChanged="grdTodaysMeals_SelectionChanged"/>
-                    <Label x:Name="lblSearch" Content="Search food" HorizontalAlignment="Left" Margin="548.295,5,0,0" VerticalAlignment="Top" Width="153" Grid.Column="4"/>
-                    <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="548.295,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="439" TextChanged="txtSearch_TextChanged" Grid.Column="4"/>
+                    <DataGrid x:Name="grdTodaysMeals" SelectedItem="{Binding selectedDailyMeal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding todayMeals, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="21,57,0,0" VerticalAlignment="Top" Height="310" Width="794" Grid.ColumnSpan="5" SelectionChanged="grdTodaysMeals_SelectionChanged"/>
+                    <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="577,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="439" TextChanged="txtSearch_TextChanged" Grid.Column="4"/>
 
-                    <DataGrid SelectedItem="{Binding SelectedFood, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding foodDatabase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="grdFoodDatabaseReference" HorizontalAlignment="Left" Margin="548.295,59,0,0" VerticalAlignment="Top" Height="557" Width="761" SelectionChanged="grdFoodDatabaseReference_SelectionChanged" Grid.Column="4"/>
-                    <Button x:Name="btnEat" Content="Eat the food!" Grid.Column="4" HorizontalAlignment="Left" Margin="900.295,618,0,0" VerticalAlignment="Top" Width="409" Click="btnEat_Click"/>
-                    <Button x:Name="btnDeleteDailyFood" Grid.ColumnSpan="5" Content="Delete selected food" HorizontalAlignment="Left" Margin="21,372,0,0" VerticalAlignment="Top" Width="758" Click="btnDeleteDailyFood_Click"/>
-                    <UCFoodInfo:FoodInfo x:Name="UCFoodInfoServing" Grid.Column="4" HorizontalAlignment="Left" Height="215" Margin="548.295,623,0,0" VerticalAlignment="Top" Width="267" Loaded="UCFoodInfoDatabase_Loaded"/>
-                    <UCFoodInfo:FoodInfo x:Name="UCFoodInfoTotal" HorizontalAlignment="Left" Height="441" Margin="21,397,0,0" VerticalAlignment="Top" Width="760" Grid.ColumnSpan="5"/>
+                    <DataGrid SelectedItem="{Binding SelectedFood, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding foodDatabase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="grdFoodDatabaseReference" HorizontalAlignment="Left" Margin="577,55,0,0" VerticalAlignment="Top" Height="557" Width="761" SelectionChanged="grdFoodDatabaseReference_SelectionChanged" Grid.Column="4"/>
+                    <Button x:Name="btnEat" Content="Eat the food!" Grid.Column="4" HorizontalAlignment="Left" Margin="863,626,0,0" VerticalAlignment="Top" Width="475" Click="btnEat_Click" Height="212"/>
+                    <Button x:Name="btnDeleteDailyFood" Grid.ColumnSpan="5" Content="Delete selected food" HorizontalAlignment="Left" Margin="21,372,0,0" VerticalAlignment="Top" Width="594" Click="btnDeleteDailyFood_Click"/>
+                    <UCFoodInfo:FoodInfo x:Name="UCFoodInfoServing" Grid.Column="4" HorizontalAlignment="Left" Height="215" Margin="580,623,0,0" VerticalAlignment="Top" Width="267" Loaded="UCFoodInfoDatabase_Loaded"/>
+                    <UCFoodInfo:FoodInfo x:Name="UCFoodInfoTotal" HorizontalAlignment="Left" Height="441" Margin="21,397,0,0" VerticalAlignment="Top" Width="610" Grid.ColumnSpan="5"/>
+                    <Calendar x:Name="calMealCalendar" SelectedDate="{Binding MealSelectedDay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Margin="386,366,0,0" VerticalAlignment="Top" Height="166" Grid.Column="4"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabDatabaseTitle" Header="Food database">
@@ -58,6 +57,9 @@
             </TabItem>
             <TabItem x:Name="tabGoalsTitle" Header="Your goals" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="117" Margin="-2,-2,-61,0">
                 <Grid x:Name="tabGoals" Background="#FFE5E5E5">
+                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="98,99,0,0" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="223,99,0,0" TextWrapping="Wrap" Text="160" VerticalAlignment="Top" Width="65"/>
+                    <Label x:Name="label" Content="g of Proteins" HorizontalAlignment="Left" Margin="293,99,0,0" VerticalAlignment="Top"/>
                     <!--<UCFoodInfo:FoodInfo TypeOfFoodInfo="Database" HorizontalAlignment="Left" Margin="37,59,0,0" VerticalAlignment="Top" Width="377"/>
                     <UCFoodInfo:FoodInfo TypeOfFoodInfo="Serving" HorizontalAlignment="Left" Margin="453,59,0,0" VerticalAlignment="Top" Width="378"/>
                     <UCFoodInfo:FoodInfo TypeOfFoodInfo="Total" HorizontalAlignment="Left" Margin="873,59,0,0" VerticalAlignment="Top" Width="378"/>-->

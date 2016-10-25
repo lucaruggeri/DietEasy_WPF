@@ -81,6 +81,12 @@ namespace DietEasy
         {
             InitializeDatabase();
             LoadFoodGrids();
+            SetCalendar();
+        }
+
+        private void SetCalendar()
+        {
+            calMealCalendar.SelectedDate = DateTime.Today;
         }
 
         private void LoadFoodGrids()

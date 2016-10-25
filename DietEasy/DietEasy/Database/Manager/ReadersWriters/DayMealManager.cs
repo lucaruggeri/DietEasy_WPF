@@ -12,16 +12,6 @@ namespace DietEasy.Database
     public static partial class DatabaseManager
     {
 
-        public static DayMeal GetDayMeal(DateTime date)
-        {
-            List<DayMeal> list = (from x in db.Table<DayMeal>()
-                                where x.Day.Equals(date)
-                                select x
-                                    ).ToList();
-
-            return list[0];
-        }
-
         public static List<Food> SearchFood(string searchString)
         {
             if (searchString.Trim() != null)

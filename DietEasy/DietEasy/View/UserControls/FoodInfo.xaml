@@ -129,7 +129,7 @@
         <StackPanel Background="Transparent" Orientation="Vertical" x:Name="ServingZone">
             <StackPanel Background="Transparent" Orientation="Horizontal">
                 <Label Content="How many serving sizes?" Style="{DynamicResource CommonFieldLabel}"/>
-                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding selectedServingSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding selectedServingSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" />
             </StackPanel>
             <StackPanel Background="Transparent" Orientation="Horizontal">
                 <Label Content="" Style="{DynamicResource CommonFieldLabel}"/>
