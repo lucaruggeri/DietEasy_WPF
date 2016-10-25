@@ -55,31 +55,31 @@ namespace DietEasy.ViewModel
             }
         }
 
-        private Food _selectedFood;
-        public Food selectedFood
+        private Food selectedFood;
+        public Food SelectedFood
         {
             get
             {
-                return _selectedFood;
+                return selectedFood;
             }
             set
             {
-                _selectedFood = value;
+                selectedFood = value;
                 LoadSelectedFoodInfo();
                 NotifyPropertyChanged();
             }
         }
 
-        private Food _selectedDatabaseFood;
-        public Food selectedDatabaseFood
+        private Food selectedDatabaseFood;
+        public Food SelectedDatabaseFood
         {
             get
             {
-                return _selectedDatabaseFood;
+                return selectedDatabaseFood;
             }
             set
             {
-                _selectedDatabaseFood = value;
+                selectedDatabaseFood = value;
                 LoadSelectedDatabaseFoodInfo();
                 NotifyPropertyChanged();
             }
@@ -142,31 +142,31 @@ namespace DietEasy.ViewModel
             }
         }
 
-        private decimal _mealCalories;
-        public decimal mealCalories { get { return _mealCalories; } set { _mealCalories = value; NotifyPropertyChanged(); } }
-        private decimal _mealCarbs;
-        public decimal mealCarbs { get { return _mealCarbs; } set { _mealCarbs = value; NotifyPropertyChanged(); } }
-        private decimal _mealSugar;
-        public decimal mealSugar { get { return _mealSugar; } set { _mealSugar = value; NotifyPropertyChanged(); } }
-        private decimal _mealFats;
-        public decimal mealFats { get { return _mealFats; } set { _mealFats = value; NotifyPropertyChanged(); } }
-        private decimal _mealProteins;
-        public decimal mealProteins { get { return _mealProteins; } set { _mealProteins = value; NotifyPropertyChanged(); } }
-        private string _mealGrams;
-        public string mealGrams { get { return _mealGrams; } set { _mealGrams = value; NotifyPropertyChanged(); } }
+        private decimal mealCalories;
+        public decimal MealCalories { get { return mealCalories; } set { mealCalories = value; NotifyPropertyChanged(); } }
+        private decimal mealCarbs;
+        public decimal MealCarbs { get { return mealCarbs; } set { mealCarbs = value; NotifyPropertyChanged(); } }
+        private decimal mealSugar;
+        public decimal MealSugar { get { return mealSugar; } set { mealSugar = value; NotifyPropertyChanged(); } }
+        private decimal mealFats;
+        public decimal MealFats { get { return mealFats; } set { mealFats = value; NotifyPropertyChanged(); } }
+        private decimal mealProteins;
+        public decimal MealProteins { get { return mealProteins; } set { mealProteins = value; NotifyPropertyChanged(); } }
+        private string mealGrams;
+        public string MealGrams { get { return mealGrams; } set { mealGrams = value; NotifyPropertyChanged(); } }
 
-        private string _CaloriesTotal;
-        public string CaloriesTotal { get { return _CaloriesTotal; } set { _CaloriesTotal = value; NotifyPropertyChanged(); } }
-        private string _CarbsTotal;
-        public string CarbsTotal { get { return _CarbsTotal; } set { _CarbsTotal = value; NotifyPropertyChanged(); } }
-        private string _SugarTotal;
-        public string SugarTotal { get { return _SugarTotal; } set { _SugarTotal = value; NotifyPropertyChanged(); } }
-        private string _FatsTotal;
-        public string FatsTotal { get { return _FatsTotal; } set { _FatsTotal = value; NotifyPropertyChanged(); } }
-        private string _ProteinsTotal;
-        public string ProteinsTotal { get { return _ProteinsTotal; } set { _ProteinsTotal = value; NotifyPropertyChanged(); } }
-        private string _CarbsCalories;
-        public string CarbsCalories { get { return _CarbsCalories; } set { _CarbsCalories = value; NotifyPropertyChanged(); } }
+        private string caloriesTotal;
+        public string CaloriesTotal { get { return caloriesTotal; } set { caloriesTotal = value; NotifyPropertyChanged(); } }
+        private string carbsTotal;
+        public string CarbsTotal { get { return carbsTotal; } set { carbsTotal = value; NotifyPropertyChanged(); } }
+        private string sugarTotal;
+        public string SugarTotal { get { return sugarTotal; } set { sugarTotal = value; NotifyPropertyChanged(); } }
+        private string fatsTotal;
+        public string FatsTotal { get { return fatsTotal; } set { fatsTotal = value; NotifyPropertyChanged(); } }
+        private string proteinsTotal;
+        public string ProteinsTotal { get { return proteinsTotal; } set { proteinsTotal = value; NotifyPropertyChanged(); } }
+        private string carbsCalories;
+        public string CarbsCalories { get { return carbsCalories; } set { carbsCalories = value; NotifyPropertyChanged(); } }
         private string _FatsCalories;
         public string FatsCalories { get { return _FatsCalories; } set { _FatsCalories = value; NotifyPropertyChanged(); } }
         private string _ProteinsCalories;
@@ -178,22 +178,22 @@ namespace DietEasy.ViewModel
         private string _ProteinsPercentage;
         public string ProteinsPercentage { get { return _ProteinsPercentage; } set { _ProteinsPercentage = value; NotifyPropertyChanged(); } }
 
-        private string _databaseFoodName;
-        public string databaseFoodName { get { return _databaseFoodName; } set { _databaseFoodName = value; NotifyPropertyChanged(); } }
-        private string _databaseFoodCalories;
-        public string databaseFoodCalories { get { return _databaseFoodCalories; } set { _databaseFoodCalories = value; NotifyPropertyChanged(); } }
-        private string _databaseFoodCarbs;
-        public string databaseFoodCarbs { get { return _databaseFoodCarbs; } set { _databaseFoodCarbs = value; NotifyPropertyChanged(); } }
-        private string _databaseFoodSugars;
-        public string databaseFoodSugar { get { return _databaseFoodSugars; } set { _databaseFoodSugars = value; NotifyPropertyChanged(); } }
-        private string _databaseFoodFats;
-        public string databaseFoodFats { get { return _databaseFoodFats; } set { _databaseFoodFats = value; NotifyPropertyChanged(); } }
-        private string _databaseFoodProteins;
-        public string databaseFoodProteins { get { return _databaseFoodProteins; } set { _databaseFoodProteins = value; NotifyPropertyChanged(); } }
-        private string _databaseFoodServingSizeGrams;
-        public string databaseFoodServingSizeGrams { get { return _databaseFoodServingSizeGrams; } set { _databaseFoodServingSizeGrams = value; NotifyPropertyChanged(); } }
-        private string _databaseFoodServingSizeDescription;
-        public string databaseFoodServingSizeDescription { get { return _databaseFoodServingSizeDescription; } set { _databaseFoodServingSizeDescription = value; NotifyPropertyChanged(); } }
+        private string _DatabaseFoodName;
+        public string DatabaseFoodName { get { return _DatabaseFoodName; } set { _DatabaseFoodName = value; NotifyPropertyChanged(); } }
+        private string _DatabaseFoodCalories;
+        public string DatabaseFoodCalories { get { return _DatabaseFoodCalories; } set { _DatabaseFoodCalories = value; NotifyPropertyChanged(); } }
+        private string _DatabaseFoodCarbs;
+        public string DatabaseFoodCarbs { get { return _DatabaseFoodCarbs; } set { _DatabaseFoodCarbs = value; NotifyPropertyChanged(); } }
+        private string _DatabaseFoodSugars;
+        public string DatabaseFoodSugar { get { return _DatabaseFoodSugars; } set { _DatabaseFoodSugars = value; NotifyPropertyChanged(); } }
+        private string _DatabaseFoodFats;
+        public string DatabaseFoodFats { get { return _DatabaseFoodFats; } set { _DatabaseFoodFats = value; NotifyPropertyChanged(); } }
+        private string _DatabaseFoodProteins;
+        public string DatabaseFoodProteins { get { return _DatabaseFoodProteins; } set { _DatabaseFoodProteins = value; NotifyPropertyChanged(); } }
+        private string _DatabaseFoodServingSizeGrams;
+        public string DatabaseFoodServingSizeGrams { get { return _DatabaseFoodServingSizeGrams; } set { _DatabaseFoodServingSizeGrams = value; NotifyPropertyChanged(); } }
+        private string _DatabaseFoodServingSizeDescription;
+        public string DatabaseFoodServingSizeDescription { get { return _DatabaseFoodServingSizeDescription; } set { _DatabaseFoodServingSizeDescription = value; NotifyPropertyChanged(); } }
 
         private Decimal _selectedServingSize;
         public Decimal selectedServingSize
@@ -214,7 +214,7 @@ namespace DietEasy.ViewModel
         public DietEasyViewModel()
         {
             //DataContext initialization
-            selectedFood = new Food();
+            SelectedFood = new Food();
             selectedDailyMeal = new DayMeal();
             totals = new DailyMealsTotals();
             meal = new DayMeal();
@@ -225,9 +225,9 @@ namespace DietEasy.ViewModel
 
         public void EatTheFood()
         {
-            if (selectedFood != null)
+            if (SelectedFood != null)
             {
-                DatabaseManager.AddDayMeal(selectedFood, selectedServingSize);
+                DatabaseManager.AddDayMeal(SelectedFood, selectedServingSize);
                 this.todayMeals = DatabaseManager.GetDayMealsList(DateTime.Today);
             }
         }
@@ -240,7 +240,7 @@ namespace DietEasy.ViewModel
 
         public void RemoveDatabaseFood()
         {
-            DatabaseManager.DeleteFood(selectedDatabaseFood);
+            DatabaseManager.DeleteFood(SelectedDatabaseFood);
             this.foodDatabase = DatabaseManager.GetFoodList();
         }
 
@@ -248,14 +248,14 @@ namespace DietEasy.ViewModel
         {
             Food newFood = new Food();
             newFood.Id = DatabaseManager.GetLastFoodId() + 1;
-            newFood.Name = databaseFoodName;
-            newFood.Calories = Decimal.Parse(databaseFoodCalories.Replace(',', '.'));
-            newFood.Carbs = Decimal.Parse(databaseFoodCarbs.Replace(',', '.'));
-            newFood.Sugar = Decimal.Parse(databaseFoodSugar.Replace(',', '.'));
-            newFood.Fats = Decimal.Parse(databaseFoodFats.Replace(',', '.'));
-            newFood.Proteins = Decimal.Parse(databaseFoodProteins.Replace(',', '.'));
-            newFood.ServingSizeGrams = Decimal.Parse(databaseFoodServingSizeGrams.Replace(',', '.'));
-            newFood.ServingSizeDescription = databaseFoodServingSizeDescription;
+            newFood.Name = DatabaseFoodName;
+            newFood.Calories = Decimal.Parse(DatabaseFoodCalories.Replace(',', '.'));
+            newFood.Carbs = Decimal.Parse(DatabaseFoodCarbs.Replace(',', '.'));
+            newFood.Sugar = Decimal.Parse(DatabaseFoodSugar.Replace(',', '.'));
+            newFood.Fats = Decimal.Parse(DatabaseFoodFats.Replace(',', '.'));
+            newFood.Proteins = Decimal.Parse(DatabaseFoodProteins.Replace(',', '.'));
+            newFood.ServingSizeGrams = Decimal.Parse(DatabaseFoodServingSizeGrams.Replace(',', '.'));
+            newFood.ServingSizeDescription = DatabaseFoodServingSizeDescription;
 
             DatabaseManager.InsertFood(newFood);
             this.foodDatabase = DatabaseManager.GetFoodList();
@@ -263,23 +263,23 @@ namespace DietEasy.ViewModel
 
         public void UpdateDatabaseFood()
         {
-            selectedDatabaseFood.Name = databaseFoodName;
-            selectedDatabaseFood.Calories = Decimal.Parse(databaseFoodCalories.Replace(',', '.'));
-            selectedDatabaseFood.Carbs = Decimal.Parse(databaseFoodCarbs.Replace(',', '.'));
-            selectedDatabaseFood.Sugar = Decimal.Parse(databaseFoodSugar.Replace(',', '.'));
-            selectedDatabaseFood.Fats = Decimal.Parse(databaseFoodFats.Replace(',', '.'));
-            selectedDatabaseFood.Proteins = Decimal.Parse(databaseFoodProteins.Replace(',', '.'));
-            selectedDatabaseFood.ServingSizeGrams = Decimal.Parse(databaseFoodServingSizeGrams.Replace(',', '.'));
-            selectedDatabaseFood.ServingSizeDescription = databaseFoodServingSizeDescription;
+            SelectedDatabaseFood.Name = DatabaseFoodName;
+            SelectedDatabaseFood.Calories = Decimal.Parse(DatabaseFoodCalories.Replace(',', '.'));
+            SelectedDatabaseFood.Carbs = Decimal.Parse(DatabaseFoodCarbs.Replace(',', '.'));
+            SelectedDatabaseFood.Sugar = Decimal.Parse(DatabaseFoodSugar.Replace(',', '.'));
+            SelectedDatabaseFood.Fats = Decimal.Parse(DatabaseFoodFats.Replace(',', '.'));
+            SelectedDatabaseFood.Proteins = Decimal.Parse(DatabaseFoodProteins.Replace(',', '.'));
+            SelectedDatabaseFood.ServingSizeGrams = Decimal.Parse(DatabaseFoodServingSizeGrams.Replace(',', '.'));
+            SelectedDatabaseFood.ServingSizeDescription = DatabaseFoodServingSizeDescription;
 
-            DatabaseManager.UpdateFood(selectedDatabaseFood);
+            DatabaseManager.UpdateFood(SelectedDatabaseFood);
 
             this.foodDatabase = DatabaseManager.GetFoodList();
         }
 
         public void ClearSelectedDatabaseFood()
         {
-            this.selectedDatabaseFood = new Food();
+            this.SelectedDatabaseFood = new Food();
         }
 
         private void UpdateTotals()
@@ -315,52 +315,55 @@ namespace DietEasy.ViewModel
 
         private void LoadSelectedFoodInfo()
         {
-            if (selectedFood.Name != null)
+            if (SelectedFood != null)
             {
-                if (selectedFood.Name != string.Empty)
+                if (SelectedFood.Name != null)
                 {
-                    //updates MEAL
-                    meal.FoodId = selectedFood.Id;
-                    meal.FoodName = selectedFood.Name;
-                    meal.Calories = selectedFood.CaloriesInServingSize(selectedServingSize);
-                    meal.Carbs = selectedFood.CarbsInServingSize(selectedServingSize);
-                    meal.Sugar = selectedFood.SugarsInServingSize(selectedServingSize);
-                    meal.Fats = selectedFood.FatsInServingSize(selectedServingSize);
-                    meal.Proteins = selectedFood.ProteinsInServingSize(selectedServingSize);
-                    meal.ServingSizes = selectedServingSize;
-                    meal.Grams = selectedFood.ServingSizeGrams * selectedServingSize;
+                    if (SelectedFood.Name != string.Empty)
+                    {
+                        //updates MEAL
+                        meal.FoodId = SelectedFood.Id;
+                        meal.FoodName = SelectedFood.Name;
+                        meal.Calories = SelectedFood.CaloriesInServingSize(selectedServingSize);
+                        meal.Carbs = SelectedFood.CarbsInServingSize(selectedServingSize);
+                        meal.Sugar = SelectedFood.SugarsInServingSize(selectedServingSize);
+                        meal.Fats = SelectedFood.FatsInServingSize(selectedServingSize);
+                        meal.Proteins = SelectedFood.ProteinsInServingSize(selectedServingSize);
+                        meal.ServingSizes = selectedServingSize;
+                        meal.Grams = SelectedFood.ServingSizeGrams * selectedServingSize;
 
-                    //updates VIEW fields
-                    mealCalories = meal.Calories;
-                    mealCarbs = meal.Carbs;
-                    mealSugar = meal.Sugar;
-                    mealFats = meal.Fats;
-                    mealProteins = meal.Proteins;
-                    mealGrams = "(" + meal.Grams.ToString() + " grams)";
+                        //updates VIEW fields
+                        MealCalories = meal.Calories;
+                        MealCarbs = meal.Carbs;
+                        MealSugar = meal.Sugar;
+                        MealFats = meal.Fats;
+                        MealProteins = meal.Proteins;
+                        MealGrams = "(" + meal.Grams.ToString() + " grams)";
+                    }
                 }
             }
         }
 
         private void LoadSelectedDatabaseFoodInfo()
         {
-            if (selectedDatabaseFood != null)
+            if (SelectedDatabaseFood != null)
             {
-                if (selectedDatabaseFood.Name != null)
-                    databaseFoodName = selectedDatabaseFood.Name;
+                if (SelectedDatabaseFood.Name != null)
+                    DatabaseFoodName = SelectedDatabaseFood.Name;
                 else
-                    databaseFoodName = string.Empty;
+                    DatabaseFoodName = string.Empty;
 
-                databaseFoodCalories = selectedDatabaseFood.Calories.ToString();
-                databaseFoodCarbs = selectedDatabaseFood.Carbs.ToString();
-                databaseFoodSugar = selectedDatabaseFood.Sugar.ToString();
-                databaseFoodFats = selectedDatabaseFood.Fats.ToString();
-                databaseFoodProteins = selectedDatabaseFood.Proteins.ToString();
-                databaseFoodServingSizeGrams = selectedDatabaseFood.ServingSizeGrams.ToString();
+                DatabaseFoodCalories = SelectedDatabaseFood.Calories.ToString();
+                DatabaseFoodCarbs = SelectedDatabaseFood.Carbs.ToString();
+                DatabaseFoodSugar = SelectedDatabaseFood.Sugar.ToString();
+                DatabaseFoodFats = SelectedDatabaseFood.Fats.ToString();
+                DatabaseFoodProteins = SelectedDatabaseFood.Proteins.ToString();
+                DatabaseFoodServingSizeGrams = SelectedDatabaseFood.ServingSizeGrams.ToString();
 
-                if (selectedDatabaseFood.ServingSizeDescription != null)
-                    databaseFoodServingSizeDescription = selectedDatabaseFood.ServingSizeDescription;
+                if (SelectedDatabaseFood.ServingSizeDescription != null)
+                    DatabaseFoodServingSizeDescription = SelectedDatabaseFood.ServingSizeDescription;
                 else
-                    databaseFoodServingSizeDescription = string.Empty;
+                    DatabaseFoodServingSizeDescription = string.Empty;
             }
         }
 

@@ -1,0 +1,194 @@
+﻿<UserControl x:Class="DietEasy.View.UserControls.FoodInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DietEasy.View.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" Width="377.448" Loaded="UserControl_Loaded">
+
+    <StackPanel Background="Transparent" Orientation="Vertical">
+
+        <StackPanel.Resources>
+            <Style x:Key="CommonFieldLabel" TargetType="Label">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="MaxHeight" Value="27" />
+                <Setter Property="Width" Value="150" />
+            </Style>
+            <Style x:Key="CommonFieldText" TargetType="TextBox">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="MaxHeight" Value="23" />
+                <Setter Property="Width" Value="100" />
+            </Style>
+        </StackPanel.Resources>
+
+        <StackPanel Background="Transparent" Orientation="Vertical" x:Name="DatabaseZone">
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Name" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" Width="450" TextWrapping="Wrap" Text="{Binding DatabaseFoodName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Calories x 100 g" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding DatabaseFoodCalories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Carbs x 100 g" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding DatabaseFoodCarbs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="of wich Sugar" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding DatabaseFoodSugar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Fats x 100 g" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding DatabaseFoodFats, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Proteins x 100 g" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding DatabaseFoodProteins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="" Style="{DynamicResource CommonFieldLabel}"/>
+            </StackPanel>
+
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="g of 1 serving size" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding DatabaseFoodServingSizeGrams, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Serving size description" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" Width="450" TextWrapping="Wrap" Text="{Binding DatabaseFoodServingSizeDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Background="Transparent" Orientation="Vertical" x:Name="TotalZone">
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Total Calories" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding CaloriesTotal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="" Style="{DynamicResource CommonFieldLabel}"/>
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Total Proteins" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding ProteinsTotal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Total Carbs g" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding CarbsTotal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Total Sugar g" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding SugarTotal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Total Fats g" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding FatsTotal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="" Style="{DynamicResource CommonFieldLabel}"/>
+            </StackPanel>
+
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Total Proteins calories" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding ProteinsCalories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Total Carbs calories" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding CarbsCalories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Total Fats calories" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding FatsCalories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="" Style="{DynamicResource CommonFieldLabel}"/>
+            </StackPanel>
+
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Proteins %" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding ProteinsPercentage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Carbs%" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding CarbsPercentage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Fats %" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding FatsPercentage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Background="Transparent" Orientation="Vertical" x:Name="ServingZone">
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="How many serving sizes?" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding selectedServingSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="" Style="{DynamicResource CommonFieldLabel}"/>
+                <Label Content="{Binding MealGrams, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CommonFieldLabel}"/>
+            </StackPanel>
+            
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="" Style="{DynamicResource CommonFieldLabel}"/>
+            </StackPanel>
+
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Calories" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding MealCalories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Carbs" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding MealCarbs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="of wich Sugar" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding MealSugar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Fats" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding MealFats, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="Proteins" Style="{DynamicResource CommonFieldLabel}"/>
+                <TextBox Style="{DynamicResource CommonFieldText}" Height="23" TextWrapping="Wrap" Text="{Binding MealProteins, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </StackPanel>
+
+        <!--
+
+
+        <StackPanel x:Name="CaloriesZone">
+            <StackPanel Background="Transparent" Orientation="Horizontal">
+                <Label Content="" Style="{DynamicResource CommonFieldLabel}"/>
+            </StackPanel>
+        </StackPanel>
+
+
+
+        <StackPanel x:Name="PercentageZone">
+        </StackPanel>-->
+
+        <!--<TextBox Style="{DynamicResource CommonFieldText}" x:Name="txtCarbsTotal" Height="23" TextWrapping="Wrap" Text="{Binding CarbsTotal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="104" />
+        <TextBox Style="{DynamicResource CommonFieldText}" x:Name="txtSugarTotal" Height="23" TextWrapping="Wrap" Text="{Binding SugarTotal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="104"  />
+        <TextBox Style="{DynamicResource CommonFieldText}" x:Name="txtProteinsTotal" Height="23" Width="104" TextWrapping="Wrap" Text="{Binding ProteinsTotal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Style="{DynamicResource CommonFieldText}" x:Name="txtFatsTotal" Height="23" TextWrapping="Wrap" Text="{Binding FatsTotal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="104" />
+        <TextBox Style="{DynamicResource CommonFieldText}" x:Name="txtCarbsCalories" Height="23" TextWrapping="Wrap" Text="{Binding CarbsCalories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Style="{DynamicResource CommonFieldText}" x:Name="txtFatsCalories" Height="23" TextWrapping="Wrap" Text="{Binding FatsCalories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Style="{DynamicResource CommonFieldText}" x:Name="txtProteinsCalories" Height="23" TextWrapping="Wrap" Text="{Binding ProteinsCalories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Style="{DynamicResource CommonFieldText}" x:Name="txtCarbsPercentage" Height="23" TextWrapping="Wrap" Text="{Binding CarbsPercentage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Style="{DynamicResource CommonFieldText}" x:Name="txtFatsPercentage" Height="23" TextWrapping="Wrap" Text="{Binding FatsPercentage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Style="{DynamicResource CommonFieldText}" x:Name="txtProteinsPercentage" Height="23" TextWrapping="Wrap" Text="{Binding ProteinsPercentage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBox Style="{DynamicResource CommonFieldText}" x:Name="textBox" Height="23" TextWrapping="Wrap" Text="{Binding mealGrams, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top"/>-->
+    </StackPanel>
+
+
+</UserControl>
